@@ -20520,3 +20520,4 @@ DOMAIN-SUFFIX,gcdsdk.appsflyersdk.com
 DOMAIN-SUFFIX,inapps.appsflyersdk.com
 DOMAIN-SUFFIX,launches.appsflyersdk.com
 DOMAIN-SUFFIX,register.appsflyersdk.com
+DOMAIN-SUFFIX,pangolin16.sgsnssdk.com
