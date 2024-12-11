@@ -1,8 +1,15 @@
-var obj = JSON.parse($response.body);
+var objc = JSON.parse($response.body);
 
+objc = {
+    "vip_expires_date": 3000330150,
+    "message": "success",
+    "data": {
+        "points": 999999999,
+        "next_claim": 1,
+        "gid": "2641810920",
+        "balance": 999999999,
+        "created_at": 1707331696
+    },
+}
 
-obj = {
-    "status": 0,
-    "expires_date": "9999-06-06 19:57:41"
-};
-$done({ body: JSON.stringify(obj) });
+$done({ body: JSON.stringify(objc) });
