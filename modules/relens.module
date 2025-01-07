@@ -8,4 +8,4 @@
 hostname = %APPEND% buy.itunes.apple.com
 
 [Script]
-Relens大光圈单反相机=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/master/scripts/Relens.js
+Relens=type=http-response,pattern=^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt,requires-body=1,script-path=https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/master/scripts/Relens.js
