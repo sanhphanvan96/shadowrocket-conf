@@ -3,7 +3,7 @@ name: Update hosts-for-shadowrocket
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 2 * * *'  # Runs daily at 02:00 UTC
+  - cron: '0 2 1 * *'  # Runs monthly on the 1st at 02:00 UTC
 
 permissions:
   contents: write
