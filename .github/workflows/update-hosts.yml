@@ -24,7 +24,7 @@ jobs:
 
       - name: Download hosts file
         run: |
-          curl -L -o hosts.txt https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hosts-iOS
+          curl -L -o hosts.txt https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 
       - name: Run conversion script
         run: |
