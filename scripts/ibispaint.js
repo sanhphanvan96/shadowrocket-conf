@@ -1,7 +1,8 @@
 // IBISPaint Premium Script
-// Version: 1.0
-// Description: This script replaces the subscription response for IBISPaint to enable premium features
+// Version: 1.5
+// Description: This script replaces the subscription response for IBISPaint to enable premium features and sets required cookies
 
+// Premium response data
 const premiumResponse = {
     "result": 1,
     "purchases": [
@@ -23,18 +24,27 @@ const premiumResponse = {
     ]
 };
 
-// Get the headers from the response
-let headers = $response.headers || {};
+// Simplest solution: combine all cookies into one string with \r\n separator as per HTTP spec
+const combinedSetCookie =
+    "tmp\r\n" +
+    "Set-Cookie: IBPNT_APP_TYPE=2; Path=/; HttpOnly\r\n" +
+    "Set-Cookie: IBPNT_APP_VERSION=130111; Path=/; HttpOnly\r\n" +
+    "Set-Cookie: IBPNT_PLATFORM_TYPE=1; Path=/; HttpOnly\r\n" +
+    "Set-Cookie: IBPNT_IS_EDUCATION_VERSION=true; Path=/; HttpOnly\r\n";
 
-// Replace the education version cookie from false to true
-if (headers["Set-Cookie"] && headers["Set-Cookie"].includes("IBPNT_IS_EDUCATION_VERSION=false")) {
-    headers["Set-Cookie"] = headers["Set-Cookie"].replace(
-        "IBPNT_IS_EDUCATION_VERSION=false",
-        "IBPNT_IS_EDUCATION_VERSION=true"
-    );
+// Create modified response
+const modifiedHeaders = $response.headers || {};
+modifiedHeaders["X"] = combinedSetCookie;
+
+// Remove Location header if it exists
+if (modifiedHeaders.hasOwnProperty("Location") || modifiedHeaders.hasOwnProperty("location")) {
+    delete modifiedHeaders["Location"];
+    delete modifiedHeaders["location"];
 }
 
+// Return modified response with status 200
 $done({
-    body: JSON.stringify(premiumResponse),
-    headers: headers
+    status: 200,
+    headers: modifiedHeaders,
+    body: JSON.stringify(premiumResponse)
 });
