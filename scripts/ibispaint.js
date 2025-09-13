@@ -1,5 +1,5 @@
 // IBISPaint Premium Script
-// Version: 1.4
+// Version: 1.5
 // Description: This script replaces the subscription response for IBISPaint to enable premium features and sets required cookies
 
 // Premium response data
@@ -35,6 +35,12 @@ const combinedSetCookie =
 // Create modified response
 const modifiedHeaders = $response.headers || {};
 modifiedHeaders["X"] = combinedSetCookie;
+
+// Remove Location header if it exists
+if (modifiedHeaders.hasOwnProperty("Location") || modifiedHeaders.hasOwnProperty("location")) {
+    delete modifiedHeaders["Location"];
+    delete modifiedHeaders["location"];
+}
 
 // Return modified response with status 200
 $done({
