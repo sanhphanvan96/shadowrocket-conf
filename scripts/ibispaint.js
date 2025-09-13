@@ -26,6 +26,7 @@ const premiumResponse = {
 
 // Simplest solution: combine all cookies into one string with \r\n separator as per HTTP spec
 const combinedSetCookie =
+    "tmp\r\n" +
     "Set-Cookie: IBPNT_APP_TYPE=2; Path=/; HttpOnly\r\n" +
     "Set-Cookie: IBPNT_APP_VERSION=130111; Path=/; HttpOnly\r\n" +
     "Set-Cookie: IBPNT_PLATFORM_TYPE=1; Path=/; HttpOnly\r\n" +
