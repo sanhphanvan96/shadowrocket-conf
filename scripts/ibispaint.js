@@ -23,4 +23,18 @@ const premiumResponse = {
     ]
 };
 
-$done({body: JSON.stringify(premiumResponse)});
+// Get the headers from the response
+let headers = $response.headers || {};
+
+// Replace the education version cookie from false to true
+if (headers["Set-Cookie"] && headers["Set-Cookie"].includes("IBPNT_IS_EDUCATION_VERSION=false")) {
+    headers["Set-Cookie"] = headers["Set-Cookie"].replace(
+        "IBPNT_IS_EDUCATION_VERSION=false",
+        "IBPNT_IS_EDUCATION_VERSION=true"
+    );
+}
+
+$done({
+    body: JSON.stringify(premiumResponse),
+    headers: headers
+});
