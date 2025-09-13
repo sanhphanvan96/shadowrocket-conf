@@ -8,6 +8,18 @@ This repository contains configuration files and scripts for Shadowrocket, a pop
 
 ## Modules
 
+- IBISPaintPremium:
+  - Icon: <img src="https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/master/icons/ibispaint.webp" alt="IBISPaintPremium Icon" width="40" height="40">
+  - App URL: https://apps.apple.com/vn/app/ibis-paint-x/id450722833
+  - Source: [https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/ibispaint.sgmodule](https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/ibispaint.sgmodule)
+  - [Click to install](shadowrocket://install?module=https%3A//raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/ibispaint.sgmodule)
+
+- Relens:
+  - Icon: <img src="https://raw.githubusercontent.com/deezertidal/private/main/icons/relens.png" alt="Relens Icon" width="40" height="40">
+  - Source: [https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/relens.sgmodule](https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/relens.sgmodule)
+  - [Click to install](shadowrocket://install?module=https%3A//raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/refs/heads/master/modules/relens.sgmodule)
+
+
 ## Ref:
 - https://manual.nssurge.com/
 - https://github.com/bigdargon/hostsVN
