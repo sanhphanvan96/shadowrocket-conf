@@ -1,4 +1,4 @@
-# download the file from https://raw.githubusercontent.com/bigdargon/hostsVN/master/option/hosts-iOS
+# download the file from https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
 input_file = 'hosts.txt'
 output_file = 'hosts-for-shadowrocket.txt'
 
