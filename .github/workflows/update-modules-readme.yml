@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install requests
+        run: pip install requests
+
       - name: Set fixed branch name
         id: branch-name
         run: |
@@ -63,9 +66,6 @@ jobs:
           git add README.md
           git commit -m "docs: update modules section in README.md [automated]"
           echo "Changes committed successfully"
-
-      # Skip the push step since peter-evans/create-pull-request will handle pushing to the branch
-      # Just keep the commit step above
 
       # Using peter-evans/create-pull-request for simpler PR creation
       - name: Create Pull Request

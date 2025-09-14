@@ -8,6 +8,7 @@ import os
 import re
 import urllib.parse
 from pathlib import Path
+import requests
 
 # Repository information
 REPO_OWNER = "sanhphanvan96"
@@ -56,6 +57,15 @@ def generate_module_entry(metadata):
     raw_url = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/refs/heads/{BRANCH}/{relative_path}"
     encoded_url = urllib.parse.quote(raw_url)
     install_url = f"shadowrocket://install?module={encoded_url}"
+    # use https://tinyurl.com/api-create.php?url=install_url to generate short link
+    try:
+        response = requests.get(f"https://tinyurl.com/api-create.php?url={install_url}", timeout=5)
+        if response.status_code == 200:
+            short_install_url = response.text.strip()
+        else:
+            short_install_url = install_url
+    except Exception:
+        short_install_url = install_url
 
     entry = []
     entry.append(f"- {metadata['name']}:")
@@ -69,7 +79,7 @@ def generate_module_entry(metadata):
         entry.append(f"  - App URL: {metadata['appurl']}")
 
     entry.append(f"  - Source: [{raw_url}]({raw_url})")
-    entry.append(f"  - [Click to install]({install_url})")
+    entry.append(f"  - [Click to install]({short_install_url})")
 
     return entry
 
