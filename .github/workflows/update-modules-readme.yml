@@ -7,7 +7,7 @@ on:
       - develop
     paths:
       - 'modules/**'
-  workflow_dispatch:  # Allow manual triggering
+  workflow_dispatch:
 
 jobs:
   update-readme:
@@ -29,16 +29,14 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Set fixed branch name
-        id: branch-name
-        run: |
-          echo "branch_name=update-readme-modules" >> $GITHUB_OUTPUT
 
-      - name: Create branch
+      - name: Prepare update branch
         run: |
-          echo "Setting up branch: ${{ steps.branch-name.outputs.branch_name }}"
-          git checkout -B ${{ steps.branch-name.outputs.branch_name }}
-          echo "Successfully created branch from ${{ github.ref_name }}"
+          git fetch origin
+          git checkout ${{ github.ref_name }}
+          git pull origin ${{ github.ref_name }}
+          git checkout -B update-readme-modules
+          echo "Successfully created update-readme-modules branch from ${{ github.ref_name }}"
 
       - name: Update README with Modules
         run: |
@@ -71,13 +69,13 @@ jobs:
       - name: Create Pull Request
         if: steps.check-changes.outputs.has_changes == 'true'
         id: create-pr
-        uses: peter-evans/create-pull-request@v5
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "docs: update modules section in README.md [automated]"
           committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          branch: ${{ steps.branch-name.outputs.branch_name }}
+          branch: update-readme-modules
           base: ${{ github.ref_name }}
           title: "docs: update modules section in README.md"
           body: |
