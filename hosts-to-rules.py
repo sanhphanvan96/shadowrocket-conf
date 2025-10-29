@@ -11,8 +11,8 @@ with open(output_file, 'w') as file:
     for line in lines:
         # Strip any leading/trailing whitespace
         line = line.strip()
-        # Skip empty lines or lines that don't start with '0'
-        if not line or not line.startswith('0'):
+        # Skip empty lines or lines that don't start with '0.0.0.0'
+        if not line or not line.startswith('0.0.0.0'):
             continue
         # Extract the domain part
         domain = line.split(' ')[1]
