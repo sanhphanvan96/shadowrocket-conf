@@ -1,8 +1,9 @@
 #!name=Relens
 #!desc=Relens
-#!homepage=https://yfamily.ml
-#!author= 89996462
-#!icon=https://raw.githubusercontent.com/deezertidal/private/main/icons/relens.png
+#!homepage=https://yfamily.ml,https://github.com/sanhphanvan96/shadowrocket-conf
+#!author=89996462,sanhphanvan96
+#!icon=https://raw.githubusercontent.com/sanhphanvan96/shadowrocket-conf/master/icons/relens.png
+#!appurl=https://apps.apple.com/us/app/relens-camera-dslr-portrait/id1638027598
 
 [MITM]
 hostname = %APPEND%buy.itunes.apple.com
